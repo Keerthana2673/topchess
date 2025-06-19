@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+:root {
+  --color-gold: #CEA82A;
+  --color-gold-dark: #AA881D;
+  --color-dark-bg: #19191A;
+  --color-text-light: #BDBDBD;
+}
+
+.rating-button .star {
+  opacity: 0.5;
+  animation: fadeHoldReset 6s infinite ease-in-out;
+}
+
+/* Smooth animation for stars 1–5 */
+.rating-button .star {
+  animation: fadeInHold 3s ease-in forwards;
+  animation-iteration-count: infinite;
+}
+
+/* Set delay and initial opacity */
+.rating-button .star-1 { animation-delay: 0s; opacity: 0.5; }
+.rating-button .star-2 { animation-delay: 0.5s; opacity: 0.5; }
+.rating-button .star-3 { animation-delay: 1s; opacity: 0.5; }
+.rating-button .star-4 { animation-delay: 1.5s; opacity: 0.5; }
+.rating-button .star-5 { animation-delay: 2s; opacity: 0.5; }
+
+/* Special case for star 6 (starts from 0) */
+.rating-button .star-6 {
+  animation: fadeInHoldZero 3s ease-in forwards;
+  animation-delay: 2.5s;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+/* Keyframe: smoothly fade to 1, then jump reset */
+@keyframes fadeInHold {
+  0% { opacity: 0.5; }
+  40% { opacity: 1; }
+  99% { opacity: 1; }
+  100% { opacity: 0.5; } /* instant reset */
+}
+
+@keyframes fadeInHoldZero {
+  0% { opacity: 0; }
+  40% { opacity: 1; }
+  99% { opacity: 1; }
+  100% { opacity: 0; } /* instant reset */
+}

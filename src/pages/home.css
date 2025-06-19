@@ -1,0 +1,92 @@
+@keyframes star-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(255, 215, 0, 0));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+  }
+}
+
+@keyframes pink-star-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(236, 72, 153, 0));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+    filter: 
+      drop-shadow(0 0 8px rgba(236, 72, 153, 1))
+      drop-shadow(0 0 16px rgba(236, 72, 153, 0.6));
+  }
+}
+
+@keyframes snake-border {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    border-color: #f472b6;
+  }
+  25% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    border-color: #f472b6;
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border-color: #f472b6;
+  }
+  75% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border-color: #ec4899;
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    border-color: #ec4899;
+  }
+}
+
+.animate-star-pulse {
+  animation: star-pulse 3s infinite;
+}
+
+.animate-pink-star-glow {
+  animation: pink-star-glow 3s infinite;
+}
+
+.animate-snake-border {
+  animation: snake-border 4s linear infinite;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-1500 {
+  animation-delay: 1.5s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-2500 {
+  animation-delay: 2.5s;
+}
+
+.star {
+  font-size: 1.5rem;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.rating-button:hover .star {
+  opacity: 1;
+}
