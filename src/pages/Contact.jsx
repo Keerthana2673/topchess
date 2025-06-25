@@ -35,41 +35,39 @@ const Contact = () => {
   };
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (isSubmitting) return;
-
-    setIsSubmitting(true);
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      // Try email first
-      const emailResponse = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+      const form = new FormData();
+      form.append('name', formData.name);
+      form.append('email', formData.email);
+      form.append('course', formData.course);
+      form.append('message', formData.message);
+
+      const response = await fetch(
+        'https://script.google.com/macros/s/AKfycbyzYZNzCzRPHZRiJ1IpNtfPzzczXdFWOMD9Vm1YmDl7ErQ2kviE9GNDE8ZCXLwuj8bZMw/exec',
+        {
+          method: 'POST',
+          body: form
+        }
+      );
+
+      const result = await response.json();
+      console.log('Success:', result);
+      alert('Message sent successfully!');
+
+      setFormData({
+        name: '',
+        email: '',
+        course: '',
+        message: ''
       });
-
-      if (emailResponse.ok) {
-        alert('Message sent successfully!');
-        return;
-      }
-
-      // Fallback to Sheets proxy
-      const sheetResponse = await fetch('/api/sheets-proxy', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-
-      const result = await sheetResponse.json();
-      if (!result.success) throw new Error('Sheets submission failed');
-
-      alert('Message received via fallback method!');
 
     } catch (error) {
-      console.error('Submission error:', error);
-      alert('Please email us directly at topchess@domain.com');
-    } finally {
+      console.error('Error:', error);
+      alert('Something went wrong. Please email us directly!');
+    }
+    finally {
       setIsSubmitting(false);
       setFormData({
         name: '',
