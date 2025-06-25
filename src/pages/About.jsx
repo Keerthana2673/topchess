@@ -154,7 +154,7 @@ const About = () => {
       </section>
 
       {/* Coaches Section */}
-      <section className="bg-gray-100 py-20 px-6 lg:px-24">
+      <section id="coaches" className="bg-gray-100 py-20 px-6 lg:px-24">
         <h2 className="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-12" data-aos="fade-up">
           Meet Our Coaches
         </h2>

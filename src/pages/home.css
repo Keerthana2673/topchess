@@ -90,3 +90,13 @@
 .rating-button:hover .star {
   opacity: 1;
 }
+
+.stats-top-shape svg {
+  height: 100px;
+  width: 100%;
+}
+
+.stats-bottom-shape svg {
+  height: 100px;
+  width: 100%;
+}

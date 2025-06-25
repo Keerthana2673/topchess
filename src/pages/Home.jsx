@@ -9,7 +9,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Users, Trophy, UserCheck, ThumbsUp } from 'lucide-react'; // Swap with your icon set if needed
-import CountUp from 'react-countup';
+import CountUp from 'react-countup'; //anna
 import './home.css';
 
 const Home = () => {
@@ -48,7 +48,7 @@ const Home = () => {
       icon: <ThumbsUp className="w-12 h-12 text-yellow-500 mb-4" />,
       bg: 'bg-white text-black',
     },
-  ];
+  ]; //anna
 
   const heroContent = {
     title: "Elevate Your Chess Game",
@@ -91,10 +91,10 @@ const Home = () => {
         <div className="container mx-auto px-6 relative z-10 h-full flex flex-col justify-center max-w-[1200px]">
           <div data-aos="fadeInLeft" data-aos-delay="100">
             <h1
-              className="text-5xl font-serif sm:text-6xl md:text-[72px] font-bold  text-white font-sans mb-6 leading-tight"
+              className="text-5xl font-serif sm:text-6xl md:text-[72px] font-bold text-white mb-6 leading-tight"
             >
               {heroContent.title}
-              <span className="block w-20 h-1 bg-gold mt-4" data-aos="fade-right" data-aos-delay="300"></span>
+              <span className="block w-20 h-1 bg-[#3a7d44] mt-4" data-aos="fade-right" data-aos-delay="300"></span>
             </h1>
             <p className="text-xl text-white/80 mb-8 font-serif italic ">
               {heroContent.subtitle}
@@ -102,7 +102,7 @@ const Home = () => {
             <div className="flex flex-wrap gap-4" data-aos="fade-up" data-aos-delay="400">
               <Link
                 to="/courses"
-                className="bg-gold hover:bg-gold-dark text-white px-8 py-4 rounded-md text-lg font-medium transition-all duration-200 shadow-lg hover:shadow-[#3a7d44]/50 hover:-translate-y-1 elementor-animation-grow"
+                className="bg-[#3a7d44] hover:bg-[#2e6336] text-white px-8 py-4 rounded-md text-lg font-medium transition-all duration-200 shadow-lg hover:shadow-[#3a7d44]/50 hover:-translate-y-1 elementor-animation-grow"
               >
                 {heroContent.cta}
               </Link>
@@ -126,7 +126,7 @@ const Home = () => {
             data-aos-delay="100"
           >
             <div className="relative group">
-              <i className="fas fa-award text-5xl text-gold mb-4 transition-transform duration-300 "></i>
+              <i className="fas fa-award text-5xl text-[#3a7d44] mb-4 transition-transform duration-300 "></i>
             </div>
             <h3 className="text-2xl font-serif font-semibold mb-2">Master Strategy</h3>
             <p className="text-gray-300">Learn proven techniques used by grandmasters to outmaneuver your opponent.</p>
@@ -138,7 +138,7 @@ const Home = () => {
             data-aos-delay="200"
           >
             <div className="relative group">
-              <i className="fas fa-user-check text-5xl text-gold mb-4 group-hover:rotate-6 transition-transform duration-300"></i>
+              <i className="fas fa-user-check text-5xl text-[#3a7d44] mb-4 group-hover:rotate-6 transition-transform duration-300"></i>
             </div>
             <h3 className="text-2xl font-serif font-semibold mb-2">Expert Coaching</h3>
             <p className="text-gray-600">Train with top-rated instructors who've played at the highest levels.</p>
@@ -151,7 +151,7 @@ const Home = () => {
             data-aos-delay="300"
           >
             <div className="relative group">
-              <i className="fas fa-users text-5xl text-gold mb-4 group-hover:scale-110 transition-transform duration-300"></i>
+              <i className="fas fa-users text-5xl text-[#3a7d44] mb-4 group-hover:scale-110 transition-transform duration-300"></i>
             </div>
             <h3 className="text-2xl font-serif font-semibold mb-2">Tournaments & Practice</h3>
             <p className="text-gray-300">Apply your skills in regular online competitions and get real feedback.</p>
@@ -170,7 +170,7 @@ const Home = () => {
             />
           </div>
           <div className="md:w-1/2" data-aos="fade-left">
-            <span className="text-gold uppercase tracking-wide font-semibold text-sm mb-2 block">
+            <span className="text-[#3a7d44] uppercase tracking-wide font-semibold text-sm mb-2 block">
               About Us
             </span>
             <h2 className="text-4xl font-serif font-bold text-gray-900 mb-6 leading-tight">
@@ -181,7 +181,7 @@ const Home = () => {
             </p>
             <Link
               to="/about"
-              className="inline-block bg-gold text-white px-6 py-3 rounded-md text-lg font-medium transition hover:bg-gold-dark"
+              className="inline-block bg-[#3a7d44] text-white px-6 py-3 rounded-md text-lg font-medium transition hover:bg-[#2e6336]"
             >
               Learn More
             </Link>
@@ -189,21 +189,43 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="bg-white px-6 py-16 lg:px-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-0 overflow-hidden rounded-lg shadow-xl">
-          {stats.map((item, idx) => (
-            <div
-              key={idx}
-              className={`${item.bg} flex flex-col items-center justify-center py-10 px-6 text-center transition-all duration-300 hover:scale-[1.02] hover:shadow-md`}
-            >
-              {item.icon}
-              <h3 className="text-5xl font-[Cinzel] font-bold flex items-center gap-1 mt-2">
-                <CountUp end={item.value} duration={2} />
-                <span className="text-yellow-500">+</span>
-              </h3>
-              <p className="text-lg font-light mt-2">{item.label}</p>
-            </div>
-          ))}
+      <section className="relative overflow-hidden bg-transparent">
+        {/* top divider */}
+        <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] z-10">
+          <svg className="block w-full h-[60px]" viewBox="0 0 1200 60" preserveAspectRatio="none">
+            <path d="M0,0 L1200,60 L1200,60 Z" fill="#fff" />
+          </svg>
+        </div>
+
+        {/* background */}
+        <div className="absolute inset-0 bg-fixed bg-center bg-cover" style={{ backgroundImage: "url('/images/aboutheader.jpg')" }}>
+          <div className="absolute inset-0 bg-black/60"></div>
+        </div>
+
+        {/* stat cards */}
+        <div className="relative z-20 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {stats.map((stat, index) => (
+              <div
+                key={index}
+                className={`p-10 text-center shadow-xl ${index % 2 === 0 ? 'bg-black text-white' : 'bg-white text-black'}`}
+              >
+                <div className="flex justify-center mb-6 text-yellow-500 text-4xl">{stat.icon}</div>
+                <h3 className="text-6xl font-extrabold flex items-center justify-center gap-1">
+                  <CountUp end={stat.value} duration={3} />
+                  <span className="text-yellow-500 text-3xl font-bold">+</span>
+                </h3>
+                <p className="text-lg font-medium">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* bottom divider */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-10">
+          <svg className="block w-full h-[60px]" viewBox="0 0 1200 60" preserveAspectRatio="none">
+            <path d="M0,60 L1200,0 L1200,60 Z" fill="#fff" />
+          </svg>
         </div>
       </section>
 

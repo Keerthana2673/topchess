@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Courses from './pages/Courses';
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 overflow-x-hidden">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -34,11 +35,7 @@ function App() {
           <Route path="/courses/advanced" element={<Advanced />} />
           <Route path="/courses/tournament" element={<Tournament />} />
         </Routes>
-        <footer className="bg-gray-800 text-white py-8">
-          <div className="container mx-auto px-4 text-center">
-            <p>© {new Date().getFullYear()} TopChess. All rights reserved.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </Router>
   );

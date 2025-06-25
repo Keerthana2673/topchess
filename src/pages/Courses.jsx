@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import ParallaxHeader from '../components/Parallaxheader';
 
 const courseList = [
@@ -33,11 +32,10 @@ const courseList = [
 ];
 
 const Courses = () => {
-  const navigate = useNavigate();
-
-  const handleJoinNow = (courseName) => {
-    navigate('/contact', { state: { courseName } });
+  const handleClick = () => {
+    window.open("https://forms.gle/UJ9ypM8xgXj4jnSb8", "_blank");
   };
+
   return (
     <>
       <ParallaxHeader
@@ -87,7 +85,7 @@ const Courses = () => {
                     </div>
                   </div>
                   <button
-                    onClick={() => handleJoinNow(course.name)}
+                    onClick={handleClick}
                     className="w-full bg-[#a1860a] hover:bg-[#856f0b] text-white text-center py-3 rounded-lg font-medium transition transform hover:-translate-y-1"
                   >
                     Join Now
