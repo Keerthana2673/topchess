@@ -40,10 +40,9 @@ const Contact = () => {
     if (isSubmitting) return;
 
     setIsSubmitting(true);
-    console.log('Form submitted:', formData);
 
     try {
-      // 1. First try to send email (primary method)
+      // 1. FIRST TRY: Send Email
       const emailResponse = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -51,43 +50,28 @@ const Contact = () => {
       });
 
       if (emailResponse.ok) {
-        // 2. If email succeeds, try Google Sheets as secondary storage
-        try {
-          const sheetResponse = await fetch('YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-          });
-
-          if (!sheetResponse.ok) {
-            console.warn('Email succeeded but Google Sheets failed');
-          }
-        } catch (sheetError) {
-          console.warn('Google Sheets submission failed:', sheetError);
-        }
-
         alert('Thank you for your submission!');
       } else {
-        // 3. If email fails, try Google Sheets as fallback
+        // 2. SECOND TRY: Google Sheets (only if email failed)
         try {
-          const sheetResponse = await fetch('YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL', {
+          const sheetResponse = await fetch('https://docs.google.com/spreadsheets/d/1Hunpi21P2JjXx2bMOhPjWWG4J3Nl5xSNjBfBgI_mYr0/edit?gid=0#gid=0', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
           });
 
           if (sheetResponse.ok) {
-            alert('Thank you! (We received your submission but email service is currently unavailable)');
+            alert('Received! (Email service unavailable)');
           } else {
-            throw new Error('Google Sheets submission failed');
+            throw new Error('Google Sheets also failed');
           }
         } catch (sheetError) {
-          throw new Error('All submission methods failed');
+          throw new Error('Could not submit via any method');
         }
       }
     } catch (error) {
-      console.error('Submission error:', error);
-      alert('Submission failed. Please try again later or contact us directly.');
+      console.error('Submission failed:', error);
+      alert('Submission failed. Please try again later.');
     } finally {
       setIsSubmitting(false);
       setFormData({
