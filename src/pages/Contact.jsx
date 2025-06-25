@@ -34,32 +34,71 @@ const Contact = () => {
     }));
   };
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (isSubmitting) return; // Prevent double submission
+
+    setIsSubmitting(true);
     console.log('Form submitted:', formData);
+
+
     try {
-      const response = await fetch('/api/send-email', {
+      // 1. First try to send email (primary method)
+      const emailResponse = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
-      if (response.ok) {
-        alert('Email sent successfully!');
+
+      if (emailResponse.ok) {
+        // 2. If email succeeds, try Google Sheets (secondary)
+        try {
+          const sheetResponse = await fetch('YOUR_GOOGLE_SCRIPT_URL', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+
+          if (!sheetResponse.ok) {
+            console.warn('Form submitted to email but Google Sheets failed');
+          }
+        } catch (sheetError) {
+          console.warn('Google Sheets submission failed:', sheetError);
+        }
+
+        alert('Thank you for your submission!');
       } else {
-        const errorData = await response.json();
-        console.error('Server error:', errorData);
-        alert('Failed to send email.');
+        // 3. If email fails, try Google Sheets as fallback
+        try {
+          const sheetResponse = await fetch('YOUR_GOOGLE_SCRIPT_URL', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
+
+          if (sheetResponse.ok) {
+            alert('Thank you! (We received your submission but email service is currently unavailable)');
+          } else {
+            throw new Error('Both submission methods failed');
+          }
+        } catch (sheetError) {
+          throw new Error('All submission methods failed');
+        }
       }
     } catch (error) {
-      console.error('Fetch error:', error);
-      alert('Something went wrong.');
+      console.error('Submission error:', error);
+      alert('Submission failed. Please try again later or contact us directly.');
+    } finally {
+      // Always reset the form
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+        course: location.state?.courseName || ''
+      });
     }
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-      course: location.state?.courseName || ''
-    });
   };
 
   return (
@@ -157,8 +196,8 @@ const Contact = () => {
               ></textarea>
             </div>
 
-            <button type="submit" className="submit-button-template">
-              Send Message
+            <button type="submit" className="submit-button-template" disabled={isSubmitting}>
+              {isSubmitting? 'Sending . . .' : 'Send Message'}
             </button>
           </form>
         </div>
