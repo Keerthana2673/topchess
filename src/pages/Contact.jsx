@@ -42,7 +42,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // 1. Try email first
+      // Try email first
       const emailResponse = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -50,21 +50,22 @@ const Contact = () => {
       });
 
       if (emailResponse.ok) {
-        alert('Thank you for your message!');
-      } else {
-        // 2. Fallback to Google Sheets via Vercel proxy
-        const sheetResponse = await fetch('/api/sheets-proxy', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
-        });
-
-        if (sheetResponse.ok) {
-          alert('Received via fallback!');
-        } else {
-          throw new Error('Both methods failed');
-        }
+        alert('Message sent successfully!');
+        return;
       }
+
+      // Fallback to Sheets proxy
+      const sheetResponse = await fetch('/api/sheets-proxy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      const result = await sheetResponse.json();
+      if (!result.success) throw new Error('Sheets submission failed');
+
+      alert('Message received via fallback method!');
+
     } catch (error) {
       console.error('Submission error:', error);
       alert('Please email us directly at topchess@domain.com');
