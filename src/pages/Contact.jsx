@@ -52,23 +52,22 @@ const Contact = () => {
       if (emailResponse.ok) {
         alert('Thank you for your message!');
       } else {
-        // 2. Fallback to Google Sheets
-        const sheetResponse = await fetch(
-          'https://script.google.com/macros/s/AKfycbyzYZNzCzRPHZRiJ1IpNtfPzzczXdFWOMD9Vm1YmDl7ErQ2kviE9GNDE8ZCXLwuj8bZMw/exec',
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
-            redirect: 'follow'
-          }
-        );
+        // 2. Fallback to Google Sheets via Vercel proxy
+        const sheetResponse = await fetch('/api/sheets-proxy', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
 
-        if (!sheetResponse.ok) throw new Error('Both methods failed');
-        alert('We received your message (email service unavailable)');
+        if (sheetResponse.ok) {
+          alert('Received via fallback!');
+        } else {
+          throw new Error('Both methods failed');
+        }
       }
     } catch (error) {
       console.error('Submission error:', error);
-      alert('Please contact us directly at topchess@domain.com');
+      alert('Please email us directly at topchess@domain.com');
     } finally {
       setIsSubmitting(false);
       setFormData({
