@@ -42,7 +42,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      // 1. FIRST TRY: Send Email
+      // 1. Try email first
       const emailResponse = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -50,28 +50,25 @@ const Contact = () => {
       });
 
       if (emailResponse.ok) {
-        alert('Thank you for your submission!');
+        alert('Thank you for your message!');
       } else {
-        // 2. SECOND TRY: Google Sheets (only if email failed)
-        try {
-          const sheetResponse = await fetch('https://script.google.com/macros/s/AKfycbyzYZNzCzRPHZRiJ1IpNtfPzzczXdFWOMD9Vm1YmDl7ErQ2kviE9GNDE8ZCXLwuj8bZMw/exec', {
+        // 2. Fallback to Google Sheets
+        const sheetResponse = await fetch(
+          'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec',
+          {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-          });
-
-          if (sheetResponse.ok) {
-            alert('Received! (Email service unavailable)');
-          } else {
-            throw new Error('Google Sheets also failed');
+            body: JSON.stringify(formData),
+            redirect: 'follow'
           }
-        } catch (sheetError) {
-          throw new Error('Could not submit via any method');
-        }
+        );
+
+        if (!sheetResponse.ok) throw new Error('Both methods failed');
+        alert('We received your message (email service unavailable)');
       }
     } catch (error) {
-      console.error('Submission failed:', error);
-      alert('Submission failed. Please try again later.');
+      console.error('Submission error:', error);
+      alert('Please contact us directly at topchess@domain.com');
     } finally {
       setIsSubmitting(false);
       setFormData({
