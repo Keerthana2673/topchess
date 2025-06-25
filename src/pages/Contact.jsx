@@ -117,7 +117,10 @@ const Contact = () => {
         </div>
 
         <div className="contact-form-section-template">
-          <form className="contact-form-template" onSubmit={handleSubmit}>
+          <form className="contact-form-template" onSubmit={handleSubmit}
+            action="https://script.google.com/macros/s/AKfycbyzYZNzCzRPHZRiJ1IpNtfPzzczXdFWOMD9Vm1YmDl7ErQ2kviE9GNDE8ZCXLwuj8bZMw/exec"
+            method="POST"
+          >
             <div className="form-group-template">
               <label htmlFor="name">Name</label>
               <input
