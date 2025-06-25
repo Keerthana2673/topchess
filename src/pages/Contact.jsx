@@ -54,7 +54,7 @@ const Contact = () => {
       } else {
         // 2. Fallback to Google Sheets
         const sheetResponse = await fetch(
-          'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec',
+          'https://script.google.com/macros/s/AKfycbyzYZNzCzRPHZRiJ1IpNtfPzzczXdFWOMD9Vm1YmDl7ErQ2kviE9GNDE8ZCXLwuj8bZMw/exec',
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
