@@ -5,7 +5,6 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Send as JSON because your Apps Script expects JSON in e.postData.contents
     const response = await fetch("https://script.google.com/macros/s/AKfycbyzYZNzCzRPHZRiJ1IpNtfPzzczXdFWOMD9Vm1YmDl7ErQ2kviE9GNDE8ZCXLwuj8bZMw/exec", {
       method: 'POST',
       body: JSON.stringify(req.body),
@@ -19,7 +18,6 @@ export default async function handler(req, res) {
     } catch {
       data = { success: false, raw: text };
     }
-
     res.status(response.status).json(data);
 
   } catch (error) {
