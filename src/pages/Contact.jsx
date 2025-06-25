@@ -54,7 +54,7 @@ const Contact = () => {
       } else {
         // 2. SECOND TRY: Google Sheets (only if email failed)
         try {
-          const sheetResponse = await fetch('https://script.google.com/macros/s/AKfycbx40iuWTbJ1NNRY366pIAhRN63kKWSXA_HAzXOyj_q6bXNBLnH5aVQ_mAK1ZRY8bqnyNw/exec', {
+          const sheetResponse = await fetch('https://script.google.com/macros/s/AKfycbyzYZNzCzRPHZRiJ1IpNtfPzzczXdFWOMD9Vm1YmDl7ErQ2kviE9GNDE8ZCXLwuj8bZMw/exec', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
