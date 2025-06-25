@@ -33,16 +33,14 @@ const Contact = () => {
       [e.target.name]: e.target.value
     }));
   };
-
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (isSubmitting) return; // Prevent double submission
+    if (isSubmitting) return;
 
     setIsSubmitting(true);
     console.log('Form submitted:', formData);
-
 
     try {
       // 1. First try to send email (primary method)
@@ -53,16 +51,16 @@ const Contact = () => {
       });
 
       if (emailResponse.ok) {
-        // 2. If email succeeds, try Google Sheets (secondary)
+        // 2. If email succeeds, try Google Sheets as secondary storage
         try {
-          const sheetResponse = await fetch('YOUR_GOOGLE_SCRIPT_URL', {
+          const sheetResponse = await fetch('YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
           });
 
           if (!sheetResponse.ok) {
-            console.warn('Form submitted to email but Google Sheets failed');
+            console.warn('Email succeeded but Google Sheets failed');
           }
         } catch (sheetError) {
           console.warn('Google Sheets submission failed:', sheetError);
@@ -72,7 +70,7 @@ const Contact = () => {
       } else {
         // 3. If email fails, try Google Sheets as fallback
         try {
-          const sheetResponse = await fetch('YOUR_GOOGLE_SCRIPT_URL', {
+          const sheetResponse = await fetch('YOUR_GOOGLE_APPS_SCRIPT_WEBAPP_URL', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(formData)
@@ -81,7 +79,7 @@ const Contact = () => {
           if (sheetResponse.ok) {
             alert('Thank you! (We received your submission but email service is currently unavailable)');
           } else {
-            throw new Error('Both submission methods failed');
+            throw new Error('Google Sheets submission failed');
           }
         } catch (sheetError) {
           throw new Error('All submission methods failed');
@@ -91,7 +89,7 @@ const Contact = () => {
       console.error('Submission error:', error);
       alert('Submission failed. Please try again later or contact us directly.');
     } finally {
-      // Always reset the form
+      setIsSubmitting(false);
       setFormData({
         name: '',
         email: '',
@@ -197,7 +195,7 @@ const Contact = () => {
             </div>
 
             <button type="submit" className="submit-button-template" disabled={isSubmitting}>
-              {isSubmitting? 'Sending . . .' : 'Send Message'}
+              {isSubmitting ? 'Sending . . .' : 'Send Message'}
             </button>
           </form>
         </div>
