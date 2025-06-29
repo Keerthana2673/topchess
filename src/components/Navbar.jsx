@@ -23,7 +23,7 @@ const Navbar = () => {
       ]
     },
     { name: 'Contact', href: '/contact' },
-    { name: 'Daily puzzle', href: '/puzzles' }
+    // { name: 'Daily puzzle', href: '/puzzles' } // Puzzle link commented out
   ];
 
   useEffect(() => {
@@ -132,11 +132,12 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              {localStorage.getItem('isAdminAuthenticated') && (
+              {/* Admin panel link commented out */}
+              {/* {localStorage.getItem('isAdminAuthenticated') && (
                 <Link to="/admin/upload" className="text-sm text-gray-500">
                   Admin Panel
                 </Link>
-              )}
+              )} */}
               <button className="ml-4 bg-[#3a7d44] hover:bg-[#2e6336] text-white px-6 py-2 rounded-md text-[15px] font-medium transition-colors duration-200">
                 Join Now
               </button>
@@ -158,11 +159,11 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-        </div >
-      </header >
+        </div>
+      </header>
 
       {/* Mobile Navigation - appears below navbar */}
-      < AnimatePresence >
+      <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -170,7 +171,7 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
             className="absolute inset-x-0 top-24 z-40 bg-white/95 backdrop-blur-md lg:hidden shadow-lg mx-auto w-[92%] xl:w-[1200px] 2xl:w-[1400px] rounded-b-lg overflow-hidden"
-          >{/* anna fixed - absolute */}
+          >
             <div className="px-6 py-4">
               {navItems.map((item) => (
                 <div key={item.name} className="border-b border-gray-100 last:border-0">
@@ -227,18 +228,19 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              {localStorage.getItem('isAdminAuthenticated') && (
+              {/* Admin panel link commented out for mobile */}
+              {/* {localStorage.getItem('isAdminAuthenticated') && (
                 <Link to="/admin/upload" className="text-sm text-gray-500">
                   Admin Panel
                 </Link>
-              )}
+              )} */}
               <button className="w-full bg-[#3a7d44] hover:bg-[#2e6336] text-white px-4 py-3 rounded-md text-[15px] font-medium mt-4">
                 Join Now
               </button>
             </div>
           </motion.div>
         )}
-      </AnimatePresence >
+      </AnimatePresence>
     </>
   );
 };
