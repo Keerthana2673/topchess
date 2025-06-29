@@ -57,11 +57,11 @@ const Footer = () => {
                         <div className="flex-1 min-w-[200px] px-2">
                             <h4 className="text-heading font-heading text-lg font-semibold mb-4">Useful Links</h4>
                             <ul className="list-none p-0">
-                                <li className="mb-2"><a href="/" className="text-white hover:text-accent transition-colors">Privacy Policy</a></li>
-                                <li className="mb-2"><a href="/" className="text-white hover:text-accent transition-colors">Terms and Conditions</a></li>
-                                <li className="mb-2"><a href="/" className="text-white hover:text-accent transition-colors">Disclaimer</a></li>
-                                <li className="mb-2"><a href="/" className="text-white hover:text-accent transition-colors">Support</a></li>
-                                <li className="mb-2"><a href="/" className="text-white hover:text-accent transition-colors">FAQ</a></li>
+                                <li className="mb-2"><a href="/" rel="noopener noreferrer"className="text-white hover:text-accent transition-colors">Privacy Policy</a></li>
+                                <li className="mb-2"><a href="/" rel="noopener noreferrer"className="text-white hover:text-accent transition-colors">Terms and Conditions</a></li>
+                                <li className="mb-2"><a href="/" rel="noopener noreferrer"className="text-white hover:text-accent transition-colors">Disclaimer</a></li>
+                                <li className="mb-2"><a href="/" rel="noopener noreferrer"className="text-white hover:text-accent transition-colors">Support</a></li>
+                                <li className="mb-2"><a href="/" rel="noopener noreferrer"className="text-white hover:text-accent transition-colors">FAQ</a></li>
                             </ul>
                         </div>
 
@@ -69,16 +69,16 @@ const Footer = () => {
                         <div className="flex-1 min-w-[200px] px-2">
                             <h4 className="text-heading font-heading text-lg font-semibold mb-4">Our Social Media</h4>
                             <div className="flex gap-2 mb-5">
-                                <a href="/" className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-secondary hover:bg-accent hover:text-heading transition-all">
+                                <a href="https://www.facebook.com/" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-secondary hover:bg-accent hover:text-heading transition-all">
                                     <FontAwesomeIcon icon={faFacebookF} />
                                 </a>
-                                <a href="/" className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-secondary hover:bg-accent hover:text-heading transition-all">
+                                <a href="https://x.com/?lang=en" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-secondary hover:bg-accent hover:text-heading transition-all">
                                     <FontAwesomeIcon icon={faTwitter} />
                                 </a>
-                                <a href="/" className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-secondary hover:bg-accent hover:text-heading transition-all">
+                                <a href="https://www.instagram.com/" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-secondary hover:bg-accent hover:text-heading transition-all">
                                     <FontAwesomeIcon icon={faInstagram} />
                                 </a>
-                                <a href="/" className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-secondary hover:bg-accent hover:text-heading transition-all">
+                                <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-primary text-secondary hover:bg-accent hover:text-heading transition-all">
                                     <FontAwesomeIcon icon={faYoutube} />
                                 </a>
                             </div>

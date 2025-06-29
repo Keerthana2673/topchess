@@ -30,33 +30,33 @@ const Home = () => {
   const stats = [
     {
       label: 'Member Satisfaction',
-      value: 567,
-      icon: <Users className="w-12 h-12 text-yellow-500 mb-4" />,
+      value: 864,
+      icon: <Users className="w-12 h-12 text-[#3a7d44] mb-4" />,
       bg: 'bg-zinc-900 text-white',
     },
     {
       label: 'Winner Trophy',
-      value: 129,
-      icon: <Trophy className="w-12 h-12 text-yellow-500 mb-4" />,
+      value: 260,
+      icon: <Trophy className="w-12 h-12 text-[#3a7d44] mb-4" />,
       bg: 'bg-white text-black',
     },
     {
       label: 'Professional Team',
-      value: 100,
-      icon: <UserCheck className="w-12 h-12 text-yellow-500 mb-4" />,
+      value: 60,
+      icon: <UserCheck className="w-12 h-12 text-[#3a7d44] mb-4" />,
       bg: 'bg-zinc-900 text-white',
     },
     {
       label: 'Many Courses',
       value: 40,
-      icon: <ThumbsUp className="w-12 h-12 text-yellow-500 mb-4" />,
+      icon: <ThumbsUp className="w-12 h-12 text-[#3a7d44] mb-4" />,
       bg: 'bg-white text-black',
     },
   ]; //anna
 
   const heroContent = {
     title: "Elevate Your Chess Game",
-    subtitle: "Join our masterclass programs with world-class instructors",
+    subtitle: "Join our Top-Rated masterclass programs with world-class instructors",
     cta: "Explore Courses"
   };
 
@@ -130,7 +130,7 @@ const Home = () => {
             data-aos-delay="100"
           >
             <div className="relative group">
-              <i className="fas fa-award text-5xl text-[#3a7d44] mb-4 transition-transform duration-300 "></i>
+              <i className="fas fa-award text-5xl text-[#3a7d44] mb-4 group-hover:scale-110 transition-transform duration-300"></i>
             </div>
             <h3 className="text-2xl font-serif font-semibold mb-2">Master Strategy</h3>
             <p className="text-gray-300">Learn proven techniques used by grandmasters to outmaneuver your opponent.</p>
@@ -142,7 +142,7 @@ const Home = () => {
             data-aos-delay="200"
           >
             <div className="relative group">
-              <i className="fas fa-user-check text-5xl text-[#3a7d44] mb-4 group-hover:rotate-6 transition-transform duration-300"></i>
+              <i className="fas fa-user-check text-5xl text-[#3a7d44] mb-4 group-hover:scale-110 transition-transform duration-300"></i>
             </div>
             <h3 className="text-2xl font-serif font-semibold mb-2">Expert Coaching</h3>
             <p className="text-gray-600">Train with top-rated instructors who've played at the highest levels.</p>
@@ -157,8 +157,8 @@ const Home = () => {
             <div className="relative group">
               <i className="fas fa-users text-5xl text-[#3a7d44] mb-4 group-hover:scale-110 transition-transform duration-300"></i>
             </div>
-            <h3 className="text-2xl font-serif font-semibold mb-2">Tournaments & Practice</h3>
-            <p className="text-gray-300">Apply your skills in regular online competitions and get real feedback.</p>
+            <h3 className="text-2xl font-serif font-semibold mb-2">Play. Learn. Grow.</h3>
+            <p className="text-gray-300">Apply your skills in regular competitions and get real feedback.</p>
           </div>
         </div>
       </section>
@@ -185,7 +185,9 @@ const Home = () => {
             </p>
             <Link
               to="/about"
-              className="inline-block bg-[#3a7d44] text-white px-6 py-3 rounded-md text-lg font-medium transition hover:bg-[#2e6336]"
+              className="inline-block bg-[#3a7d44] hover:shadow-[#3a7d44]/50 hover:-translate-y-1 text-white px-6 py-3 rounded-md text-lg font-medium transition-all duration-300 transform hover:bg-[#2e6336] hover:scale-105 focus:outline-none focus:ring-4 focus:ring-[#3a7d44]/40 shadow-md hover:shadow-lg"
+              data-aos="zoom-in"
+              data-aos-delay="300"
             >
               Learn More
             </Link>
@@ -193,137 +195,93 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-transparent">
-        {/* top divider */}
-        <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] z-10">
-          <svg className="block w-full h-[60px]" viewBox="0 0 1200 60" preserveAspectRatio="none">
-            <path d="M0,0 L1200,60 L1200,60 Z" fill="#fff" />
-          </svg>
+      <section className="relative py-28 sm:py-36 overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          style={{ backgroundImage: "url('/images/aboutheader.jpg')" }}
+        >
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80 opacity-90"></div>
         </div>
 
-        {/* background */}
-        <div className="absolute inset-0 bg-fixed bg-center bg-cover" style={{ backgroundImage: "url('/images/aboutheader.jpg')" }}>
-          <div className="absolute inset-0 bg-black/60"></div>
-        </div>
-
-        {/* stat cards */}
-        <div className="relative z-20 w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className={`p-10 text-center shadow-xl ${index % 2 === 0 ? 'bg-black text-white' : 'bg-white text-black'}`}
-              >
-                <div className="flex justify-center mb-6 text-yellow-500 text-4xl">{stat.icon}</div>
-                <h3 className="text-6xl font-extrabold flex items-center justify-center gap-1">
-                  <CountUp end={stat.value} duration={3} />
-                  <span className="text-yellow-500 text-3xl font-bold">+</span>
-                </h3>
-                <p className="text-lg font-medium">{stat.label}</p>
-              </div>
-            ))}
+        {/* Stat Cards */}
+        <div className="relative z-10 container mx-auto px-6">
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-8 md:p-12"
+            data-aos="fade-up"
+          >
+            {stats.map((stat, index) => {
+              const isDark = index % 2 === 0; // Alternate
+              return (
+                <div
+                  key={index}
+                  className={`
+              p-8  shadow-2xl transition-transform duration-300 transform hover:-translate-y-2 hover:shadow-2xl text-center
+              ${isDark ? 'bg-black text-white' : 'bg-white text-black'}
+            `}
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 100}
+                >
+                  <div className="flex justify-center mb-6 text-4xl text-[#3a7d44] group-hover:scale-110 transition-transform duration-300">
+                    {stat.icon}
+                  </div>
+                  <h3 className={`text-5xl font-extrabold flex justify-center items-center gap-1`}>
+                    <CountUp end={stat.value} duration={3} />
+                    <span className="text-[#3a7d44] text-3xl font-bold">+</span>
+                  </h3>
+                  <p className={`text-md font-medium mt-2 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
+                    {stat.label}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
-
-        {/* bottom divider */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-10">
-          <svg className="block w-full h-[60px]" viewBox="0 0 1200 60" preserveAspectRatio="none">
-            <path d="M0,60 L1200,0 L1200,60 Z" fill="#fff" />
-          </svg>
-        </div>
       </section>
+
 
       {/* Our Courses Section */}
       <section className="py-24 bg-white">
-        <div className="container max-w-6xl mx-auto px-6 text-center">
-          <span className="text-[#a1860a] uppercase tracking-wide font-semibold text-sm mb-2 block" data-aos="fade-up">
-            Our Courses
+        <div className="container max-w-4xl mx-auto px-6 text-center">
+          <span className="text-[#a1860a] uppercase tracking-widest font-semibold text-sm mb-3 block" data-aos="fade-up">
+            Our Signature Course
           </span>
-          <h2 className="text-4xl font-serif font-bold text-gray-900 mb-10" data-aos="fade-up" data-aos-delay="100">
-            Best Courses And Learning
+          <h2 className="text-4xl sm:text-5xl font-serif font-bold text-gray-900 mb-6" data-aos="fade-up" data-aos-delay="100">
+            Master Chess With Confidence
           </h2>
-          <p className="text-gray-600 mb-16" data-aos="fade-up" data-aos-delay="200">
-            Explore beginner to advanced chess courses designed for all ages, with expert coaching, flexible schedules, and real-game strategies.
+          <p className="text-gray-600 max-w-2xl mx-auto mb-16 text-lg" data-aos="fade-up" data-aos-delay="200">
+            Unlock your full potential with our all-in-one chess program — perfect for aspiring players of all levels. Learn strategy, tactics, openings, and endgames with expert instruction and practical lessons.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Beginner */}
-            <div className="bg-white shadow-lg p-0 overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="300">
-              <div className="relative overflow-hidden">
-                <img src="images/course/homebasic.jpg" alt="Beginner Chess" className="w-full h-48 object-cover" />
+          <div className="flex justify-center">
+            <div
+              className="bg-[#1e1e1e] text-white shadow-xl p-0 overflow-hidden rounded-xl max-w-md w-full"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div className="relative">
+                <img
+                  src="/images/course/homeintermediate.jpg"
+                  alt="Chess Masterclass"
+                  className="w-full h-56 object-cover"
+                />
               </div>
               <div className="p-6 text-left">
-                <h3 className="text-2xl text-gray-900 font-serif font-semibold mb-2">Beginner Chess Course</h3>
-                <div className="flex items-center text-gray-500 mb-4">
-                  <i className="far fa-clock mr-2"></i>
-                  2 Hours / Meeting
-                  <i className="fas fa-certificate ml-4 mr-2"></i>
-                  Certification
-                </div>
-                <div className="flex items-center mb-4">
-                  <span className="text-yellow-500 font-semibold mr-2">4.9</span>
-                  <div className="text-yellow-500">
-                    {[...Array(5)].map((_, i) => <i key={i} className="fas fa-star mr-0.5"></i>)}
-                  </div>
-                </div>
-                <Link
-                  to="/courses/beginner"
-                  className="block bg-gold hover:bg-gold-dark text-white text-center py-3 rounded-lg font-medium transition transform hover:-translate-y-1"
-                >
-                  Join Now
-                </Link>
-              </div>
-            </div>
-
-            {/* Intermediate */}
-            <div className="bg-[#1e1e1e] text-white shadow-lg p-0 overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="400">
-              <div className="relative overflow-hidden">
-                <img src="/images/course/homeintermediate.jpg" alt="Intermediate Chess" className="w-full h-48 object-cover" />
-              </div>
-              <div className="p-6 text-left">
-                <h3 className="text-2xl font-serif font-semibold mb-2">Intermediate Chess Course</h3>
-                <div className="flex items-center text-gray-400 mb-4">
-                  <i className="far fa-clock mr-2"></i>
-                  2 Hours / Meeting
-                  <i className="fas fa-certificate ml-4 mr-2"></i>
-                  Certification
-                </div>
+                <h3 className="text-2xl font-serif font-semibold mb-3">Chess Masterclass</h3>
                 <div className="flex items-center mb-4">
                   <span className="text-yellow-400 font-semibold mr-2">4.9</span>
                   <div className="text-yellow-400">
-                    {[...Array(5)].map((_, i) => <i key={i} className="fas fa-star mr-0.5"></i>)}
+                    {[...Array(5)].map((_, i) => (
+                      <i key={i} className="fas fa-star mr-0.5"></i>
+                    ))}
                   </div>
                 </div>
+                <p className="text-gray-300 mb-5 leading-relaxed">
+                  A complete journey from beginner fundamentals to advanced concepts — designed to elevate your play and sharpen your decision-making on the board.
+                </p>
                 <Link
-                  to="/courses/intermediate"
-                  className="block bg-gold hover:bg-gold-dark text-white text-center py-3 rounded-lg font-medium transition transform hover:-translate-y-1"
-                >
-                  Join Now
-                </Link>
-              </div>
-            </div>
-
-            {/* Expert */}
-            <div className="bg-white shadow-lg p-0 overflow-hidden rounded-lg" data-aos="fade-up" data-aos-delay="500">
-              <div className="relative overflow-hidden">
-                <img src="/images/course/homeexpert.jpg" alt="Expert Chess" className="w-full h-48 object-cover" />
-              </div>
-              <div className="p-6 text-left">
-                <h3 className="text-2xl text-gray-900 font-serif font-semibold mb-2">Expert Chess Course</h3>
-                <div className="flex items-center text-gray-500 mb-4">
-                  <i className="far fa-clock mr-2"></i>
-                  2 Hours / Meeting
-                  <i className="fas fa-certificate ml-4 mr-2"></i>
-                  Certification
-                </div>
-                <div className="flex items-center mb-4">
-                  <span className="text-yellow-500 font-semibold mr-2">4.9</span>
-                  <div className="text-yellow-500">
-                    {[...Array(5)].map((_, i) => <i key={i} className="fas fa-star mr-0.5"></i>)}
-                  </div>
-                </div>
-                <Link
-                  to="/courses/expert"
+                  to="/courses"
                   className="block bg-gold hover:bg-gold-dark text-white text-center py-3 rounded-lg font-medium transition transform hover:-translate-y-1"
                 >
                   Join Now
@@ -333,6 +291,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
 
       {/* Why Choose Us Section */}
       <section className="py-24 bg-[#f9f9f9]">
@@ -352,8 +311,8 @@ const Home = () => {
 
             {/* Progress Bars */}
             {[
+              { label: "Expert Coaches", value: 98 },
               { label: "Best Courses", value: 95 },
-              { label: "Expert Coaches", value: 93 },
               { label: "Top Awards", value: 90 },
             ].map((item, index) => (
               <div key={index} className="mb-6">

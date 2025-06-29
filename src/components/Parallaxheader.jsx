@@ -24,18 +24,18 @@ const ParallaxHeader = ({
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
         {/* Breadcrumbs */}
         <nav className="mb-4 text-white text-sm font-medium tracking-wide">
-          <Link to="/" className="hover:text-[#8ac249] transition-colors">
+          <Link to="/" className="hover:text-[#3a7d44] transition-colors">
             Home
           </Link>
           {breadcrumbs.map((crumb, index) => (
             <span key={index} className="mx-2 text-white/50">
               /
               {index === breadcrumbs.length - 1 ? (
-                <span className="ml-2 text-[#8ac249]">{crumb.title}</span>
+                <span className="ml-2 text-[#3a7d44]">{crumb.title}</span>
               ) : (
                 <Link
                   to={crumb.path}
-                  className="ml-2 hover:text-[#8ac249] transition-colors"
+                  className="ml-2 hover:text-[#3a7c44] transition-colors"
                 >
                   {crumb.title}
                 </Link>

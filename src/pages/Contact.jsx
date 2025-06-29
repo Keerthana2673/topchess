@@ -89,13 +89,13 @@ const Contact = () => {
                         </div>
 
                         <div className="social-icons-template">
-                            <a href="/" className="social-icon-template">
+                            <a href="https://www.facebook.com/" rel="noopener noreferrer" className="social-icon-template">
                                 <FontAwesomeIcon icon={faFacebookF} />
                             </a>
-                            <a href="/" className="social-icon-template">
+                            <a href="https://www.facebook.com/" rel="noopener noreferrer" className="social-icon-template">
                                 <FontAwesomeIcon icon={faTwitter} />
                             </a>
-                            <a href="/" className="social-icon-template">
+                            <a href="https://www.instagram.com/" rel="noopener noreferrer" className="social-icon-template">
                                 <FontAwesomeIcon icon={faInstagram} />
                             </a>
                         </div>

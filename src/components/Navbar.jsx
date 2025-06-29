@@ -9,6 +9,7 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [openMobileDropdown, setOpenMobileDropdown] = useState(null);
   const [scrolled, setScrolled] = useState(false);
+  const handleClick = () => { window.open("https://forms.gle/UJ9ypM8xgXj4jnSb8", "_blank"); };
 
   const navItems = [
     { name: 'Home', href: '/', exact: true },
@@ -138,7 +139,8 @@ const Navbar = () => {
                   Admin Panel
                 </Link>
               )} */}
-              <button className="ml-4 bg-[#3a7d44] hover:bg-[#2e6336] text-white px-6 py-2 rounded-md text-[15px] font-medium transition-colors duration-200">
+              <button onClick={handleClick}
+                className="ml-4 bg-[#3a7d44] hover:bg-[#2e6336] text-white px-6 py-2 rounded-md text-[15px] font-medium transition-colors duration-200 transition transform hover:-translate-y-1">
                 Join Now
               </button>
             </nav>

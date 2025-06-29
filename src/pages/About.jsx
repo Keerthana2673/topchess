@@ -11,12 +11,42 @@ const About = () => {
   }, []);
 
   const coaches = [
-    { name: 'John Doe', role: 'Senior Coach', image: '/images/coach1.jpg' },
-    { name: 'Jane Smith', role: 'IM Coach', image: '/images/coach2.jpg' },
-    { name: 'Alex Roy', role: 'Beginner Trainer', image: '/images/coach3.jpg' },
-    { name: 'John Doe', role: 'Senior Coach', image: '/images/coach1.jpg' },
-    { name: 'Jane Smith', role: 'IM Coach', image: '/images/coach2.jpg' },
-    { name: 'Alex Roy', role: 'Beginner Trainer', image: '/images/coach3.jpg' },
+    {
+      name: 'John Doe',
+      role: 'Senior Coach',
+      image: '/images/coach1.jpg',
+      bio: 'John has over 15 years of experience coaching elite athletes and guiding them to success at national competitions.',
+    },
+    {
+      name: 'Jane Smith',
+      role: 'IM Coach',
+      image: '/images/coach2.jpg',
+      bio: 'Jane specializes in individual medley training and has helped swimmers achieve personal bests for over a decade.',
+    },
+    {
+      name: 'Alex Roy',
+      role: 'Beginner Trainer',
+      image: '/images/coach3.jpg',
+      bio: 'Alex works with beginners to build strong foundational skills in a fun, supportive environment.',
+    },
+    {
+      name: 'John Doe',
+      role: 'Senior Coach',
+      image: '/images/coach1.jpg',
+      bio: 'John has over 15 years of experience coaching elite athletes and guiding them to success at national competitions.',
+    },
+    {
+      name: 'Jane Smith',
+      role: 'IM Coach',
+      image: '/images/coach2.jpg',
+      bio: 'Jane specializes in individual medley training and has helped swimmers achieve personal bests for over a decade.',
+    },
+    {
+      name: 'Alex Roy',
+      role: 'Beginner Trainer',
+      image: '/images/coach3.jpg',
+      bio: 'Alex works with beginners to build strong foundational skills in a fun, supportive environment.',
+    },
   ];
 
   return (
@@ -44,7 +74,7 @@ const About = () => {
           <div data-aos="fade-left" className="flex flex-col justify-center h-full">
             <p className="text-yellow-600 text-sm uppercase font-medium mb-2">About Us</p>
             <h2 className="text-4xl lg:text-5xl font-serif font-bold text-gray-800 mb-4 leading-tight">
-              We Are Best <br /> Chess Club <br /> Since 2015
+              We Are Best <br /> Chess Club <br /> Since 2010
             </h2>
             <p className="text-gray-600 text-base mb-8 leading-relaxed">
               We are a team of professional chess players dedicated to promoting chess learning at all levels.
@@ -55,14 +85,14 @@ const About = () => {
             <div className="flex flex-wrap gap-10 items-center">
               <div>
                 <h3 className="text-3xl font-bold text-gray-800">
-                  <CountUp end={12} duration={2} />
+                  <CountUp end={15} duration={4} />
                   <span className="text-yellow-600">+</span>
                 </h3>
                 <p className="text-gray-600">Years Experienced</p>
               </div>
               <div>
                 <h3 className="text-3xl font-bold text-gray-800">
-                  <CountUp end={800} duration={2} />
+                  <CountUp end={800} duration={6} />
                   <span className="text-yellow-600">+</span>
                 </h3>
                 <p className="text-gray-600">Outstanding Members</p>
@@ -127,8 +157,8 @@ const About = () => {
 
             {/* Progress Bars */}
             {[
+              { label: "Expert Coaches", value: 98 },
               { label: "Best Courses", value: 95 },
-              { label: "Expert Coaches", value: 93 },
               { label: "Top Awards", value: 90 },
             ].map((item, index) => (
               <div key={index} className="mb-6">
@@ -160,17 +190,28 @@ const About = () => {
         </h2>
         <div className="grid md:grid-cols-3 gap-10">
           {coaches.map((coach, idx) => (
-            <div
-              key={idx}
-              data-aos="flip-left"
-              className="bg-white rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
-            >
-              <img src={coach.image} alt={coach.name} className="w-full h-72 object-cover" />
-              <div className="p-6 text-center">
-                <h3 className="text-xl font-bold text-gray-800">{coach.name}</h3>
-                <p className="text-gray-600">{coach.role}</p>
+            <div className="prespective group w-full h-96">
+              <div className="relative w-full h-full duration-700 preserve-3d group-hover:rotate-y-180">
+
+                {/* Front */}
+                <div className="absolute inset-0 backface-hidden bg-white rounded-xl shadow-xl overflow-hidden">
+                  <img src={coach.image} alt={coach.name} className="w-full h-72 object-cover" />
+                  <div className="p-6 text-center">
+                    <h3 className="text-xl font-bold text-gray-800">{coach.name}</h3>
+                    <p className="text-gray-600">{coach.role}</p>
+                  </div>
+                </div>
+
+                {/* Back */}
+                <div className="absolute inset-0 backface-hidden rotate-y-180 bg-white rounded-xl shadow-xl p-6 flex flex-col justify-center items-center text-center">
+                  <h3 className="text-xl font-bold text-gray-800">{coach.name}</h3>
+                  <p className="text-gray-600 mb-4">{coach.role}</p>
+                  <p className="text-sm text-gray-500">{coach.bio}</p>
+                </div>
               </div>
             </div>
+
+
           ))}
         </div>
       </section>
