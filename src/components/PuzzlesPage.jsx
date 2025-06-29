@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom';
+import ParallaxHeader from '../components/Parallaxheader';
 
 export default function PuzzlesPage() {
   const puzzles = JSON.parse(localStorage.getItem('chessPuzzles') || '[]');
 
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold mb-6">Chess Puzzles</h1>
+      <ParallaxHeader
+        title="Puzzles"
+        breadcrumbs={[{ title: 'Puzzles', path: '/puzzles' }]}
+        backgroundImage="/images/aboutheader.jpg"
+      />
+      <h1 className="text-2xl text-gray-900 font-bold mb-6">Chess Puzzles</h1>
       
       {puzzles.length === 0 ? (
         <p>No puzzles available yet.</p>
