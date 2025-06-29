@@ -22,7 +22,8 @@ const Navbar = () => {
         { name: 'Tournament Preparation', href: '/courses/tournament' },
       ]
     },
-    { name: 'Contact', href: '/contact' }
+    { name: 'Contact', href: '/contact' },
+    { name: 'Daily puzzle', href: '/puzzles' }
   ];
 
   useEffect(() => {
@@ -131,6 +132,11 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
+              {localStorage.getItem('isAdminAuthenticated') && (
+                <Link to="/admin/upload" className="text-sm text-gray-500">
+                  Admin Panel
+                </Link>
+              )}
               <button className="ml-4 bg-[#3a7d44] hover:bg-[#2e6336] text-white px-6 py-2 rounded-md text-[15px] font-medium transition-colors duration-200">
                 Join Now
               </button>
@@ -221,6 +227,11 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
+              {localStorage.getItem('isAdminAuthenticated') && (
+                <Link to="/admin/upload" className="text-sm text-gray-500">
+                  Admin Panel
+                </Link>
+              )}
               <button className="w-full bg-[#3a7d44] hover:bg-[#2e6336] text-white px-4 py-3 rounded-md text-[15px] font-medium mt-4">
                 Join Now
               </button>

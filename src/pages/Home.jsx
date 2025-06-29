@@ -16,6 +16,10 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [expandedIndex, setExpandedIndex] = useState(null);
 
+  const handleClick = () => {
+    window.open('https://www.google.com/maps/place/Thirumal+Chess+Academy,+Tambaram+Corporation/@12.91707,80.07425,17z/data=!4m8!3m7!1s0x3a52f5899cb25019:0xb401e6efaa80188!8m2!3d12.9170735!4d80.076828!9m1!1b1!16s%2Fg%2F11b8_knpx4?entry=ttu&g_ep=EgoyMDI1MDYxNi4wIKXMDSoASAFQAw%3D%3D', '_blank', 'noopener,noreferrer');
+  };
+
   const backgrounds = [
     "/images/hero/hero1.jpg",
     "/images/hero/hero2.jpg",
@@ -458,7 +462,7 @@ const Home = () => {
                 <div className="absolute inset-0 border-2 border-transparent animate-snake-border"></div>
               </div>
 
-              <button className="relative z-10 border border-white/20 text-white bg-gray-900/60 px-8 py-4 rounded-xl text-2xl font-semibold flex items-center gap-2 transition-all duration-500 hover:bg-gray-900/80 hover:shadow-2xl hover:shadow-purple-500/20">
+              <button onClick={handleClick} className="relative z-10 border border-white/20 text-white bg-gray-900/60 px-8 py-4 rounded-xl text-2xl font-semibold flex items-center gap-2 transition-all duration-500 hover:bg-gray-900/80 hover:shadow-2xl hover:shadow-purple-500/20">
                 <span>How much will you rate us</span>
 
                 <span className="stars flex gap-1 ml-4">

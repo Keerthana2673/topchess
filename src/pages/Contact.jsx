@@ -152,9 +152,6 @@ const Contact = () => {
                     className="w-full h-full"
                 />
             </div>
-            <div className="contact-footer-template">
-                <p>&copy; 2023 Top Chess Academy. All rights reserved.</p>
-            </div>
         </>
     );
 };
